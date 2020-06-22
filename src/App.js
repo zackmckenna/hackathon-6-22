@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios'
-import { Form, Button, Card, Container, Col, Row, ListGroup, ListGroupItem, Jumbotron, InputGroup, FormControl } from 'react-bootstrap'
-import { repoData } from './repodata'
+import { Button, Container, Col, Row, ListGroup, ListGroupItem, Jumbotron, InputGroup, FormControl } from 'react-bootstrap'
 import GithubGoNav from './components/GithubGoNav'
 import ProgrammerPlayingCard from './components/ProgrammerPlayingCard'
 import CardBlob from './components/CardBlob'
@@ -35,6 +33,7 @@ function App() {
         console.log(JSON.parse(result))
       })
       .catch(error => console.log('error', error));
+    makeAPIRepoRequest(`users/${username}/repos`)
   }
 
   const makeAPIRepoRequest = (endpoint) => {
@@ -60,53 +59,12 @@ function App() {
       .catch(error => console.log('error', error));
   }
 
-  const testAuth = () => {
-    var myHeaders = new Headers();
-    const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-    const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-    const authHeader = "Basic " + btoa(CLIENT_ID + ":" + CLIENT_SECRET);
-
-    myHeaders.append("Authorization", authHeader);
-
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
-
-    fetch("https://api.github.com/", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-  }
-
-  const handleAuthClick = () => {
-    axios.get('https://api.github.com/users/zackmckenna')
-        .then(res => {
-          console.log(res)
-        })
-  }
-
   const generateRepos = (userRepos) => {
     if(userRepos) {
       return userRepos.map(repo => {
         return <UserRepos repo={repo} />
       })
     }
-  }
-
-
-  const handleGetUserData = () => {
-    axios.get(`https://api.github.com/users/${username}`)
-      .then(res => {
-        console.log(res)
-        setUserData(res.data)
-      })
-    axios.get(`https://api.github.com/users/${username}/repos`)
-      .then(res => {
-        console.log(res)
-        setUserRepos(res.data)
-      })
   }
 
   const handleUsernameChange = (e) => {
@@ -136,12 +94,11 @@ function App() {
             />
             <InputGroup.Append>
               <Button style={{ color: 'white'}} className='btn-info' onClick={() => makeAPIRequest(`users/${username}`)} variant="outline-secondary">Create a Card</Button>
-              <Button style={{ color: 'white'}} className='btn-info' onClick={() => makeAPIRepoRequest(`users/${username}/repos`)} variant="outline-secondary">GET REPOS</Button>
             </InputGroup.Append>
           </InputGroup>
         </Col>
       </Row>
-      <Row>
+      <Row >
         <Col>
           <ProgrammerPlayingCard data={userData} />
         </Col>
@@ -150,7 +107,9 @@ function App() {
         </Col>
       </Row>
       <Row>
-        {generateRepos(userRepos)}
+        <ListGroup>
+          {generateRepos(userRepos)}
+        </ListGroup>
       </Row>
     </Container>
     </div>

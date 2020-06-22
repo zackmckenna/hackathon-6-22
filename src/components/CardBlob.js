@@ -1,5 +1,5 @@
 import React from 'react'
-import {ListGroup, ListGroupItem} from 'react-bootstrap'
+import { ListGroup } from 'react-bootstrap'
 
 const CardBlob = ({data}) => {
   if(data){
@@ -10,6 +10,7 @@ const CardBlob = ({data}) => {
           <ListGroup.Item>is following {data.following} users</ListGroup.Item>
           <ListGroup.Item>for hire: {data.hirable ? 'Yes' : 'No'}</ListGroup.Item>
           <ListGroup.Item>created: {data.created_at}</ListGroup.Item>
+          <ListGroup.Item>public repos: {data.public_repos}</ListGroup.Item>
         </ListGroup>
       </>
     )

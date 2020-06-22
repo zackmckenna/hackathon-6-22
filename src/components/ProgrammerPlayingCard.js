@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Jumbotron, Col, Row, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 const ProgrammerPlayingCard = ({data}) => {
   console.log('data at playing card component', data)
