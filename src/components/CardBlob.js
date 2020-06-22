@@ -5,12 +5,12 @@ const CardBlob = ({data}) => {
   if(data){
     return (
       <>
-      <p>{data.name}</p>
-            <ListGroup>
-              <ListGroupItem></ListGroupItem>
-              <ListGroupItem>Test</ListGroupItem>
-              <ListGroupItem>Test</ListGroupItem>
-            </ListGroup>
+        <ListGroup>
+          <ListGroup.Item>has {data.followers} followers</ListGroup.Item>
+          <ListGroup.Item>is following {data.following} users</ListGroup.Item>
+          <ListGroup.Item>for hire: {data.hirable ? 'Yes' : 'No'}</ListGroup.Item>
+          <ListGroup.Item>created: {data.created_at}</ListGroup.Item>
+        </ListGroup>
       </>
     )
   } else {

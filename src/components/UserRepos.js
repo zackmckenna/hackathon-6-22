@@ -1,11 +1,11 @@
 import React from 'react'
-import { Card, ListGroupItem } from 'react-bootstrap'
+import { Card, ListGroup } from 'react-bootstrap'
 
 const UserRepos = ({repo})  => {
   return (
-    <ListGroupItem>
+    <ListGroup.Item>
       {repo.name}
-    </ListGroupItem>
+    </ListGroup.Item>
   )
 }
 

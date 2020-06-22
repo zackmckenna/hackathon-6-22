@@ -12,9 +12,6 @@ const ProgrammerPlayingCard = ({data}) => {
             <Card.Title>{data.name? data.name : data.login }</Card.Title>
             <Card.Subtitle>aka {data.name ? data.login : null}</Card.Subtitle>
           </Card.Body>
-          <Card.Text>
-            TEST
-          </Card.Text>
          </Card>
       </>
     )
