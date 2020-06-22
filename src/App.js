@@ -6,12 +6,7 @@ import axios from 'axios'
 function App() {
 
   const handleAuthClick = () => {
-    axios.get('https://api.github.com', {
-      params: {
-        client_id: process.env.REACT_APP_CLIENT_ID,
-        client_secret: process.env.REACT_APP_CLIENT_SECRET
-      }
-    })
+    axios.get('https://api.github.com')
         .then(res => {
           console.log(res)
         })
