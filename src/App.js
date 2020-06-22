@@ -1,12 +1,24 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
 
 function App() {
 
+  const handleUserAuthClick = () => {
+
+  }
+
   const handleAuthClick = () => {
-    fetch('https://api.github.com/login/oath/authorize')
-      .then(res => res.json())
+    axios.get('https://api.github.com', {
+      params: {
+        client_id: process.env.REACT_APP_CLIENT_ID,
+        client_secret: process.env.REACT_APP_CLIENT_SECRET
+      }
+    })
+        .then(res => {
+          console.log(res)
+        })
   }
 
   useEffect(() => {
