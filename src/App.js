@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios'
 import { Button, Container, Col, Row, ListGroup, ListGroupItem, Jumbotron, InputGroup, FormControl } from 'react-bootstrap'
 import GithubGoNav from './components/GithubGoNav'
 import ProgrammerPlayingCard from './components/ProgrammerPlayingCard'
