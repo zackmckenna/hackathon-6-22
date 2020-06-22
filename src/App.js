@@ -5,10 +5,6 @@ import axios from 'axios'
 
 function App() {
 
-  const handleUserAuthClick = () => {
-
-  }
-
   const handleAuthClick = () => {
     axios.get('https://api.github.com', {
       params: {
