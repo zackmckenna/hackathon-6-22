@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -11,6 +11,8 @@ function App() {
 
   useEffect(() => {
     console.log(process.env.REACT_APP_TEST)
+    console.log(process.env.REACT_APP_CLIENT_ID)
+    console.log(process.env)
   }, [])
 
   return (
